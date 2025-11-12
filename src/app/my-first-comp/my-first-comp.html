@@ -23,11 +23,34 @@
 
     <button type="submit">submit</button>
   </form>
-  <div *ngIf="issubmitted">
+   <!--<div *ngIf="issubmitted">
     <h3> Our Contact Information</h3>
     <p> <strong> Name:</strong>{{name}} </p>
     <p><strong>Email:</strong> {{email}} </p>
     <p><strong>Message:</strong> {{message}} </p>
 
-  </div>
+  </div>-->
+  <div >
+  <h3>Our Contact Information</h3>
+  <table cellpadding="8" cellspacing="0">
+    <thead>  
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Message</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let msg of messages ; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{msg.split(',')[0].split(':')[1].trim()}}</td>
+        <td>{{msg.split(',')[1].split(':')[1].trim()}}</td>
+        <td>{{msg.split(',')[2].split(':')[1].trim()}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 </div>

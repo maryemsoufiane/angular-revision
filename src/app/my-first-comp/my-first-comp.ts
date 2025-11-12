@@ -14,9 +14,13 @@ export class MyFirstComp {
   email: string = '';
   message: string = '';
   issubmitted: boolean = false;
-
+  messages:Array<string>=[];
   onSubmit() {
     console.log('Form submitted', this.name, this.email, this.message);
     this.issubmitted = true;
+    this.messages.push(`Name: ${this.name}, Email: ${this.email}, Message: ${this.message}`);
+    this.name = '';
+    this.email = '';
+    this.message = '';
   }
 }
