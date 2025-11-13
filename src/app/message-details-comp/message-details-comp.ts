@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-message-details-comp',
-  imports: [],
+  selector: 'app-message-details-comp',   // 👈 vérifie que ce nom correspond bien à ta balise HTML
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './message-details-comp.html',
-  styleUrl: './message-details-comp.css',
+  styleUrls: ['./message-details-comp.css']
 })
 export class MessageDetailsComp {
-
+  @Input() message: any;   // 👈 un seul message
+  @Input() index!: number;  // 👈 important
 }

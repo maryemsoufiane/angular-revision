@@ -4,6 +4,7 @@ import { MyFirstComp } from './my-first-comp/my-first-comp';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [RouterOutlet, MyFirstComp],
   templateUrl: './app.html',
   styleUrl: './app.css'

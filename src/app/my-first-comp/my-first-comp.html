@@ -29,7 +29,7 @@
     <p><strong>Email:</strong> {{email}} </p>
     <p><strong>Message:</strong> {{message}} </p>
 
-  </div>-->
+  </div>
   <div >
   <h3>Our Contact Information</h3>
   <table cellpadding="8" cellspacing="0">
@@ -50,7 +50,13 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div>-->
+<div>
+<app-message-details-comp
+  *ngFor="let msg of messages; let i = index"
+  [message]="msg"
+  [index]="i + 1">
+</app-message-details-comp>
 
 
 </div>
