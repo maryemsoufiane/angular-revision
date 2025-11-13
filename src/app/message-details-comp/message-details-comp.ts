@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-message-details-comp',   // 👈 vérifie que ce nom correspond bien à ta balise HTML
@@ -10,5 +11,12 @@ import { CommonModule } from '@angular/common';
 })
 export class MessageDetailsComp {
   @Input() message: any;   // 👈 un seul message
-  @Input() index!: number;  // 👈 important
+  @Input() index: number = 0;
+ 
+  @Output() delete = new EventEmitter<any>();
+
+  OnDelete() :void{
+   this.delete.emit(this.index)
+
+  }
 }

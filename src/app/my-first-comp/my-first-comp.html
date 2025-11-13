@@ -55,8 +55,9 @@
 <app-message-details-comp
   *ngFor="let msg of messages; let i = index"
   [message]="msg"
-  [index]="i + 1">
+  [index]="i + 1"
+  (delete)="deleteMessage($event)">
+  
 </app-message-details-comp>
-
 
 </div>

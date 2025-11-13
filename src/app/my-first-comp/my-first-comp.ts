@@ -70,6 +70,9 @@ export class MyFirstComp {
     this.email = '';
     this.message = '';
   }
+  deleteMessage(index:number):void{
+    this.messages.splice(index ,1 );
+  }
 }
 
  
