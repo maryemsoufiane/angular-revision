@@ -1,55 +1,13 @@
-/*import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-
-@Component({
-  selector: 'app-my-first-comp',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './my-first-comp.html',
-  styleUrls: ['./my-first-comp.css'], // corrigé
-})
- /*export class MyFirstComp {
-  name: string = '';
-  email: string = '';
-  message: string = '';
-  issubmitted: boolean = false;
-  messages:Array<string>=[];
-  onSubmit() {
-    console.log('Form submitted', this.name, this.email, this.message);
-    this.issubmitted = true;
-    this.messages.push(`Name: ${this.name}, Email: ${this.email}, Message: ${this.message}`);
-    this.name = '';
-    this.email = '';
-    this.message = '';
-  }
- export class MyFirstComp {
-  name = '';
-  email = '';
-  message = '';
-  messages: any[] = [];
-
-  onSubmit() {
-    this.messages.push({
-      name: this.name,
-      email: this.email,
-      message: this.message
-    });
-
-    // vider le formulaire
-    this.name = '';
-    this.email = '';
-    this.message = '';
-  }*/
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MessageDetailsComp } from '../message-details-comp/message-details-comp';
+import { MyFirst } from '../services/my-first';
 
 @Component({
   selector: 'app-my-first-comp',
   standalone: true,
-  imports: [FormsModule, CommonModule, MessageDetailsComp], // 👈 import ici
+  imports: [FormsModule, CommonModule, MessageDetailsComp],
   templateUrl: './my-first-comp.html',
   styleUrls: ['./my-first-comp.css']
 })
@@ -58,9 +16,19 @@ export class MyFirstComp {
   email = '';
   message = '';
   messages: any[] = [];
+  isSubmited: boolean = false;
+
+  // ⚡ property injection
+  private service: MyFirst = inject(MyFirst);
+
+  constructor() {
+    this.messages = this.service.getAllMessages();
+    this.isSubmited = this.messages.length > 0;
+  }
 
   onSubmit() {
-    this.messages.push({
+    this.isSubmited = true;
+    this.service.insert({
       name: this.name,
       email: this.email,
       message: this.message
@@ -70,10 +38,8 @@ export class MyFirstComp {
     this.email = '';
     this.message = '';
   }
-  deleteMessage(index:number):void{
-    this.messages.splice(index ,1 );
+
+  deleteMessage(index: number): void {
+    this.service.deleteMessage(index);
   }
 }
-
- 
-
