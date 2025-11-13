@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MyFirstComp } from './my-first-comp/my-first-comp';
+import { MenuComponent } from './menu-component/menu';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MyFirstComp],
+  imports: [RouterOutlet, MenuComponent ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
